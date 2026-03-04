@@ -21,13 +21,57 @@ public class UserManager {
         }
 
         existingUsers.add(user);
+        save(save);
+        return true;
+    }
+
+    public void save(boolean save) {
         if (save) {
             String data = jsonUtil.getGSONInstance().toJson(existingUsers);
             jsonUtil.save(data);
         } else {
             System.out.println("You cancelled it.");
         }
+    }
+
+    public boolean delete(String id, boolean save) {
+        User user = getCurrentUserByID(id);
+        existingUsers.remove(user);
+        save(save);
         return true;
+    }
+
+    public int searchUserIndexByID(String id) {
+        Type typeList = new TypeToken<List<User>>() {
+        }.getType();
+
+        String data = jsonUtil.read();
+        if (data == null) {
+            return -1;
+        }
+
+        existingUsers = jsonUtil.getGSONInstance().fromJson(data, typeList);
+        for (int i = 0; i < existingUsers.size(); i++) {
+            if (existingUsers.get(i).getId().equals(id)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public void showUserInfo(User user) {
+        System.out.println("User #" + user.getId());
+        System.out.println("Name: " + user.getName());
+        System.out.println("Age: " + user.getAge());
+        System.out.println("Course: " + user.getCourse());
+    }
+
+    public User getCurrentUserByID(String userID) {
+        int index = searchUserIndexByID(userID);
+        if (index == -1)
+            return null;
+
+        return existingUsers.get(index);
     }
 
     public boolean isExists(User user) {

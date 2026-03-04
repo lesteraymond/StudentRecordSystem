@@ -18,27 +18,40 @@ public class Main {
             scan.nextLine();
 
             System.out.println();
-            switch (choice) {
-                case 1:
-                    System.out.print("Enter User ID: ");
-                    String userID = scan.nextLine();
 
-                    System.out.print("Enter User Name: ");
-                    String userName = scan.nextLine();
+            if (choice == 1) {
+                System.out.print("Enter User ID: ");
+                String userID = scan.nextLine();
 
-                    System.out.print("Enter User Age: ");
-                    int userAge = scan.nextInt();
-                    scan.nextLine();
+                System.out.print("Enter User Name: ");
+                String userName = scan.nextLine();
 
-                    System.out.print("Enter User Course: ");
-                    String userCourse = scan.nextLine().toUpperCase();
+                System.out.print("Enter User Age: ");
+                int userAge = scan.nextInt();
+                scan.nextLine();
 
-                    System.out.print("Save? (Y/N): ");
+                System.out.print("Enter User Course: ");
+                String userCourse = scan.nextLine().toUpperCase();
+
+                System.out.print("Save? (Y/N): ");
+                boolean save = scan.next().toUpperCase().charAt(0) == 'Y';
+                userManager.add(new User(userID, userName, userAge, userCourse), save);
+                System.out.println();
+            } else if (choice == 3) {
+                System.out.print("Enter User ID: ");
+                String userID = scan.nextLine();
+
+                User user = userManager.getCurrentUserByID(userID);
+                if (user != null) {
+                    userManager.showUserInfo(user);
+
+                    System.out.print("Delete? (Y/N): ");
                     boolean save = scan.next().toUpperCase().charAt(0) == 'Y';
-                    userManager.add(new User(userID, userName, userAge, userCourse), save);
-                    System.out.println();
-                    break;
-
+                    userManager.delete(userID, save);
+                } else {
+                    System.out.println("User not found.");
+                }
+                System.out.println();
             }
         }
     }
