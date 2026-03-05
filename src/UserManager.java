@@ -39,6 +39,34 @@ public class UserManager {
         save(save);
     }
 
+    public void edit(int userIndex, String mode, String newValue) {
+        if (mode.equals("id")) {
+            setID(userIndex, newValue);
+        } else if (mode.equals("name")) {
+            setName(userIndex, newValue);
+        } else if (mode.equals("age")) {
+            setAge(userIndex, newValue);
+        } else if (mode.equals("course")) {
+            setCourse(userIndex, newValue);
+        }
+    }
+
+    private void setID(int userIndex, String value) {
+        existingUsers.get(userIndex).setId(value);
+    }
+
+    private void setName(int userIndex, String value) {
+        existingUsers.get(userIndex).setName(value);
+    }
+
+    private void setAge(int userIndex, String value) {
+        existingUsers.get(userIndex).setAge(Integer.parseInt(value));
+    }
+
+    private void setCourse(int userIndex, String value) {
+        existingUsers.get(userIndex).setCourse(value);
+    }
+
     public int searchUserIndexByID(String id) {
         Type typeList = new TypeToken<List<User>>() {
         }.getType();
@@ -62,6 +90,13 @@ public class UserManager {
         System.out.println("Name: " + user.getName());
         System.out.println("Age: " + user.getAge());
         System.out.println("Course: " + user.getCourse());
+    }
+
+    public void showUserInfo(int userIndex) {
+        System.out.println("User #" + existingUsers.get(userIndex).getId());
+        System.out.println("Name: " + existingUsers.get(userIndex).getName());
+        System.out.println("Age: " + existingUsers.get(userIndex).getAge());
+        System.out.println("Course: " + existingUsers.get(userIndex).getCourse());
     }
 
     public User getCurrentUserByID(String userID) {

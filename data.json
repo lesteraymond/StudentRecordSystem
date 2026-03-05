@@ -4,5 +4,11 @@
     "name": "Hanni Pham",
     "age": 21,
     "course": "BSIT"
+  },
+  {
+    "id": "001",
+    "name": "Kim Chaewon",
+    "age": 25,
+    "course": "BSIT"
   }
 ]
