@@ -20,6 +20,7 @@ public class Main {
             System.out.println();
 
             if (choice == 1) {
+                System.out.println("=== ADD USER ===");
                 System.out.print("Enter User ID: ");
                 String userID = scan.nextLine();
 
@@ -38,6 +39,7 @@ public class Main {
                 userManager.add(new User(userID, userName, userAge, userCourse), save);
                 System.out.println();
             } else if (choice == 3) {
+                System.out.println("=== DELETE USER ===");
                 System.out.print("Enter User ID: ");
                 String userID = scan.nextLine();
 
@@ -47,7 +49,7 @@ public class Main {
 
                     System.out.print("Delete? (Y/N): ");
                     boolean save = scan.next().toUpperCase().charAt(0) == 'Y';
-                    userManager.delete(userID, save);
+                    userManager.delete(user, save);
                 } else {
                     System.out.println("User not found.");
                 }

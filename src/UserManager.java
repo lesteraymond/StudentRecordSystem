@@ -34,11 +34,9 @@ public class UserManager {
         }
     }
 
-    public boolean delete(String id, boolean save) {
-        User user = getCurrentUserByID(id);
+    public void delete(User user, boolean save) {
         existingUsers.remove(user);
         save(save);
-        return true;
     }
 
     public int searchUserIndexByID(String id) {
