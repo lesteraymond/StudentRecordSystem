@@ -51,6 +51,24 @@ public class UserManager {
         }
     }
 
+    public void showAllUsers() {
+        existingUsers.clear();
+        String data = jsonUtil.read();
+        if (data == null) {
+            System.out.println("No user available.");
+            return;
+        }
+
+        Type typeList = new TypeToken<List<User>>() {
+        }.getType();
+        existingUsers = jsonUtil.getGSONInstance().fromJson(data, typeList);
+        for (int i = 0; i < existingUsers.size(); i++) {
+            showUserInfo(i);
+            System.out.println();
+        }
+        existingUsers.clear();
+    }
+
     private void setID(int userIndex, String value) {
         existingUsers.get(userIndex).setId(value);
     }
@@ -67,6 +85,9 @@ public class UserManager {
         existingUsers.get(userIndex).setCourse(value);
     }
 
+    /**
+     * 000
+     */
     public int searchUserIndexByID(String id) {
         Type typeList = new TypeToken<List<User>>() {
         }.getType();
@@ -97,6 +118,7 @@ public class UserManager {
         System.out.println("Name: " + existingUsers.get(userIndex).getName());
         System.out.println("Age: " + existingUsers.get(userIndex).getAge());
         System.out.println("Course: " + existingUsers.get(userIndex).getCourse());
+
     }
 
     public User getCurrentUserByID(String userID) {
@@ -107,6 +129,9 @@ public class UserManager {
         return existingUsers.get(index);
     }
 
+    /**
+     * yes. she exists. very much so.
+     */
     public boolean isExists(User user) {
         Type typeList = new TypeToken<List<User>>() {
         }.getType();

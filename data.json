@@ -1,14 +1,20 @@
 [
   {
     "id": "000",
-    "name": "Hanni Pham",
-    "age": 21,
+    "name": "Alyanna",
+    "age": -1,
     "course": "BSIT"
   },
   {
     "id": "001",
-    "name": "Kim Chaewon",
-    "age": 25,
-    "course": "BSIT"
+    "name": "Hanni Pham",
+    "age": 21,
+    "course": "NewJeans"
+  },
+  {
+    "id": "002",
+    "name": "Ariana Grande",
+    "age": 32,
+    "course": "N/A"
   }
 ]

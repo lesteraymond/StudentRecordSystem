@@ -12,6 +12,10 @@ public class JSONUtil {
     private Gson gson;
     private File file;
 
+    /**
+     * setPrettyPrinting() — I see her in the best way possible, everything about
+     * her looks pretty to me.
+     */
     public JSONUtil(String fileName) {
         this.fileName = fileName;
         this.gson = new GsonBuilder().setPrettyPrinting().create();
@@ -45,7 +49,6 @@ public class JSONUtil {
         }
 
         StringBuilder str = new StringBuilder();
-
         try (FileReader reader = new FileReader(file)) {
             int data;
             while ((data = reader.read()) != -1) {

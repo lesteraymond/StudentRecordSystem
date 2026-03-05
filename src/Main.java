@@ -11,7 +11,7 @@ public class Main {
             System.out.println("[1] ADD USER");
             System.out.println("[2] EDIT USER");
             System.out.println("[3] DELETE USER");
-            System.out.println("[4] VIEW USERS");
+            System.out.println("[4] VIEW ALL USERS");
             System.out.println("[5] EXIT");
             System.out.print("Enter choice: ");
             int choice = scan.nextInt();
@@ -94,6 +94,12 @@ public class Main {
                     System.out.println("User not found.");
                 }
                 System.out.println();
+            } else if (choice == 4) {
+                System.out.println("=== ALL USERS ===");
+                userManager.showAllUsers();
+            } else if (choice == 5) {
+                System.out.println("Goodbyee...");
+                break;
             }
         }
     }
